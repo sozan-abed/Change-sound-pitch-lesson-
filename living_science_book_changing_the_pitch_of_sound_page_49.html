@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Living Science Book: 2.4 Changing the Pitch of Sound — Stringed Instruments</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Fredoka (headings/playful) & Nunito (readable textbook body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:ital,wght@0,500;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Fredoka', 'sans-serif'],
+            sans: ['Nunito', 'sans-serif'],
+          },
+          colors: {
+            bookPaper: '#FFFDF7',
+            sciBlue: '#0284C7',
+            sciTeal: '#0D9488',
+            sciAmber: '#F59E0B',
+            sciOrange: '#EA580C',
+            sciGreen: '#16A34A',
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    body {
+      font-family: 'Nunito', sans-serif;
+      background-color: #E6F2F8;
+      color: #1E293B;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, .font-display {
+      font-family: 'Fredoka', sans-serif;
+    }
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F1F5F9;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94A3B8;
+    }
+    .vocab-term {
+      color: #EA580C;
+      font-weight: 800;
+      background-color: #FFF7ED;
+      border-bottom: 2px dashed #FB923C;
+      padding: 0 5px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      display: inline-block;
+    }
+    .vocab-term:hover, .vocab-term:focus {
+      background-color: #FFEDD5;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 6px rgba(234, 88, 12, 0.2);
+    }
+    .btn-tactile {
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+      box-shadow: 0 3px 0 rgba(15, 23, 42, 0.18);
+    }
+    .btn-tactile:active {
+      transform: translateY(2px);
+      box-shadow: 0 1px 0 rgba(15, 23, 42, 0.18);
+    }
+    @keyframes popIn {
+      0% { transform: scale(0.9); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .animate-pop {
+      animation: popIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- TOP NAVIGATION & TEACHER CONTROL HEADER -->
+  <header class="bg-gradient-to-r from-sky-700 via-cyan-700 to-teal-700 text-white shadow-lg sticky top-0 z-30">
+    <div class="max-w-[1600px] mx-auto px-3 sm:px-6 py-2.5 flex flex-wrap items-center justify-between gap-2">
+      <!-- Brand / Book Title -->
+      <div class="flex items-center gap-2.5">
+        <div class="bg-amber-400 text-slate-900 p-2 rounded-xl shadow-md flex items-center justify-center">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+          </svg>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-extrabold uppercase tracking-wider bg-white/20 px-2 py-0.5 rounded-full">Grade 4–5 Science</span>
+            <span class="hidden md:inline text-xs font-semibold text-cyan-100">Section 2.4 • Changing the pitch of sound</span>
+          </div>
+          <h1 class="text-base sm:text-xl font-bold tracking-wide leading-tight">Living Science Book: Stringed Instruments</h1>
+        </div>
+      </div>
+
+      <!-- Book View Switcher (Textbook + Lab vs Focus Lab) -->
+      <div class="flex items-center gap-1.5 sm:gap-2 bg-slate-900/25 p-1.5 rounded-2xl border border-white/15">
+        <span class="px-2.5 py-1 rounded-xl bg-white text-slate-900 font-extrabold text-xs sm:text-sm">
+          📖 Page 49: Stringed Instruments
+        </span>
+      </div>
+
+      <!-- Progress Badge & Teacher Reset -->
+      <div class="flex items-center gap-2">
+        <button id="badgeHeaderBtn" onclick="openBadgeModal()" class="flex items-center gap-1.5 bg-amber-400/20 hover:bg-amber-400/30 border border-amber-300/40 px-3 py-1.5 rounded-xl text-xs font-bold text-amber-100 transition">
+          <span>⭐</span>
+          <span id="headerProgressText">0 / 3 Tasks</span>
+        </button>
+
+        <button onclick="openTeacherResetModal()" class="btn-tactile bg-rose-600 hover:bg-rose-500 text-white text-xs sm:text-sm font-bold px-3 py-1.5 rounded-xl flex items-center gap-1.5 border border-rose-400/40" title="Reset simulation and student answers for the next class">
+          <span>👩‍🏫</span>
+          <span class="hidden md:inline">Teacher Mode / Reset All</span>
+          <span class="md:hidden">Reset</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN SPLIT-SCREEN BOOK WORKSPACE -->
+  <main class="flex-1 max-w-[1600px] w-full mx-auto p-3 sm:p-5 grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5 items-start">
+
+    <!-- LEFT PANEL: INTERACTIVE TEXTBOOK PAGE 49 (5 Columns on Large Screens) -->
+    <section class="lg:col-span-5 bg-bookPaper rounded-3xl shadow-xl border-2 border-amber-200/80 overflow-hidden flex flex-col relative">
+      <!-- Book Top Header -->
+      <div class="bg-gradient-to-r from-sky-100 via-cyan-50 to-sky-100 border-b border-sky-200 px-5 py-3 flex items-center justify-between">
+        <span class="text-xs sm:text-sm font-extrabold text-rose-600">2.4 Changing the pitch of sound</span>
+        <span class="bg-rose-600 text-white text-xs font-bold px-2.5 py-1 rounded-lg">Page 49</span>
+      </div>
+
+      <!-- Interactive Hint & Read-Aloud Banner -->
+      <div class="bg-amber-50 border-b border-amber-200/80 px-5 py-2 flex items-center justify-between text-xs text-amber-950 font-semibold gap-2">
+        <span>💡 Tap any <strong class="text-orange-600 underline decoration-dotted">orange word</strong> to learn its meaning!</span>
+        <button onclick="speakCurrentPage()" id="btnReadAloud" class="bg-sky-600 hover:bg-sky-700 text-white px-2.5 py-1 rounded-lg font-bold flex items-center gap-1 shadow-sm shrink-0 transition">
+          <span>🔊</span> <span>Read Page</span>
+        </button>
+      </div>
+
+      <!-- PAGE 49 TEXTBOOK CONTENT -->
+      <article id="textbookPage49" class="p-5 sm:p-6 space-y-4 text-base sm:text-[17px] leading-relaxed text-slate-800">
+        <!-- Top Section: Heading, Explanation & Interactive Labeled Guitar Headstock Diagram -->
+        <div class="flex flex-col sm:flex-row gap-4 items-start">
+          <div class="flex-1 space-y-3">
+            <h2 class="text-2xl sm:text-3xl font-bold text-rose-600 tracking-tight">Stringed instruments</h2>
+            <p>
+              A guitar is a
+              <button type="button" class="vocab-term" onclick="showVocab('stringed instrument')">stringed instrument</button>.
+              Some strings are thicker than others. Stringed instruments have pegs that you can use to
+              <button type="button" class="vocab-term" onclick="showVocab('tune')">tune</button>
+              the instrument by making the strings looser or tighter. When the guitar is tuned, the
+              <button type="button" class="vocab-term" onclick="showVocab('pitch')">pitch</button>
+              gives a perfect sound. If you listen to music and the instrument is out of tune the music sounds horrible.
+            </p>
+            <p>
+              You can also make the strings shorter by pressing them down. These actions change the pitch of the notes.
+            </p>
+          </div>
+
+          <!-- Interactive Labeled Guitar Headstock Diagram (Matches top-right diagram on Page 49) -->
+          <div class="w-full sm:w-44 shrink-0 bg-gradient-to-b from-amber-50 to-orange-50 p-2.5 rounded-2xl border-2 border-amber-300 shadow-sm">
+            <svg viewBox="0 0 180 155" class="w-full h-auto drop-shadow-xs">
+              <!-- Guitar Neck -->
+              <polygon points="10,145 105,65 122,85 25,155" fill="#78350F" stroke="#451A03" stroke-width="2" />
+              <!-- Fret bars -->
+              <line x1="28" y1="130" x2="43" y2="144" stroke="#FDE68A" stroke-width="2" />
+              <line x1="50" y1="112" x2="65" y2="126" stroke="#FDE68A" stroke-width="2" />
+              <line x1="72" y1="94" x2="87" y2="108" stroke="#FDE68A" stroke-width="2" />
+              <line x1="94" y1="76" x2="109" y2="90" stroke="#FDE68A" stroke-width="2" />
+              <!-- Headstock -->
+              <polygon points="103,63 142,25 170,58 124,87" fill="#D97706" stroke="#78350F" stroke-width="2" />
+              <!-- Tuning Pegs (Top & Bottom) -->
+              <circle cx="115" cy="40" r="6" fill="#FACC15" stroke="#854D0E" stroke-width="1.5" />
+              <circle cx="128" cy="27" r="6" fill="#FACC15" stroke="#854D0E" stroke-width="1.5" />
+              <circle cx="141" cy="15" r="6" fill="#FACC15" stroke="#854D0E" stroke-width="1.5" />
+              <circle cx="143" cy="87" r="6" fill="#FACC15" stroke="#854D0E" stroke-width="1.5" />
+              <circle cx="156" cy="75" r="6" fill="#FACC15" stroke="#854D0E" stroke-width="1.5" />
+              <circle cx="169" cy="63" r="6" fill="#FACC15" stroke="#854D0E" stroke-width="1.5" />
+              <!-- Thick & Thin Strings -->
+              <line x1="12" y1="143" x2="120" y2="54" stroke="#E2E8F0" stroke-width="2.6" />
+              <line x1="17" y1="147" x2="132" y2="48" stroke="#E2E8F0" stroke-width="1.8" />
+              <line x1="22" y1="151" x2="145" y2="43" stroke="#F8FAFC" stroke-width="1" />
+              <!-- Labels & Pointer Lines -->
+              <text x="116" y="12" font-size="10" font-weight="bold" fill="#1E293B">pegs</text>
+              <line x1="126" y1="14" x2="138" y2="15" stroke="#475569" stroke-width="1.2" />
+
+              <text x="35" y="45" font-size="10" font-weight="bold" fill="#1E293B">thick strings</text>
+              <line x1="72" y1="49" x2="88" y2="78" stroke="#475569" stroke-width="1.2" />
+
+              <text x="4" y="75" font-size="10" font-weight="bold" fill="#1E293B">thin strings</text>
+              <line x1="34" y1="79" x2="55" y2="115" stroke="#475569" stroke-width="1.2" />
+            </svg>
+            <p class="text-[11px] text-center font-bold text-amber-900 mt-1">Guitar Headstock &amp; Strings</p>
+          </div>
+        </div>
+
+        <!-- Blue Activity Box (Matches Page 49 Activity & Questions Box) -->
+        <div class="bg-sky-50/90 border-2 border-sky-400 rounded-2xl p-4 sm:p-5 space-y-3 shadow-xs">
+          <div class="flex items-center justify-between">
+            <span class="bg-sky-500 text-white font-display font-bold text-sm px-3 py-0.5 rounded-lg">Activity</span>
+            <span class="text-xs font-extrabold text-sky-800">Try each step on the Guitar Lab ➔</span>
+          </div>
+
+          <h3 class="font-display font-bold text-lg text-sky-700">Make high-pitched and low-pitched sounds on a guitar</h3>
+
+          <ul class="space-y-2 text-sm sm:text-[15px] font-semibold text-slate-800 list-disc pl-5 marker:text-sky-500">
+            <li>Pluck the thick strings and the thin strings on a guitar.</li>
+            <li>Which strings make a higher pitched note?</li>
+            <li>
+              <button type="button" class="vocab-term" onclick="showVocab('tighten')">Tighten</button>
+              one of the strings by turning the peg. Now pluck the string. Does the sound have a higher or a lower pitch than before?
+            </li>
+            <li>
+              <button type="button" class="vocab-term" onclick="showVocab('loosen')">Loosen</button>
+              the string by turning the peg the other way. Predict the pitch of the sound when you pluck the string.
+            </li>
+            <li>Now pluck the string. Was your prediction correct?</li>
+            <li>Now press the strings down on the neck with the fingers of one hand while you pluck the strings with your other hand.</li>
+            <li>How does the pitch change?</li>
+          </ul>
+
+          <!-- Textbook Questions Self-Check Accordion -->
+          <div class="pt-2 border-t border-sky-200">
+            <button onclick="toggleBookQuestions()" class="w-full flex items-center justify-between bg-white hover:bg-sky-100 text-sky-800 font-display font-bold text-base px-3.5 py-2 rounded-xl border border-sky-300 transition">
+              <span>❓ Questions (Page 49) — Self-Check</span>
+              <span id="icon-q49" class="text-xs bg-sky-600 text-white px-2.5 py-0.5 rounded-full">Show Hints ▼</span>
+            </button>
+            <div id="panel-q49" class="hidden mt-2.5 space-y-2 bg-white p-3.5 rounded-xl border border-sky-200 text-xs sm:text-sm">
+              <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+                <p class="font-bold text-slate-900">1. Copy and complete these sentences by choosing the correct phrase:</p>
+                <p class="mt-1">• The more tightly stretched the string, the <span class="underline">higher-pitched / lower-pitched</span> the note.</p>
+                <p>• The thicker the string, the <span class="underline">higher-pitched / lower-pitched</span> the note.</p>
+                <button onclick="revealHint(this)" class="mt-1.5 text-xs font-bold text-sky-700 hover:underline">Tap to reveal answers ▶</button>
+                <div class="hidden mt-1 text-emerald-700 font-bold space-y-0.5">
+                  <p>✅ Tighter string = <strong>higher-pitched</strong> note.</p>
+                  <p>✅ Thicker string = <strong>lower-pitched</strong> note.</p>
+                </div>
+              </div>
+              <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+                <p class="font-bold text-slate-900">2. Are the vibrations faster or slower when you tighten a string?</p>
+                <button onclick="revealHint(this)" class="mt-1 text-xs font-bold text-sky-700 hover:underline">Tap to reveal answer ▶</button>
+                <p class="hidden mt-1 text-emerald-700 font-bold">✅ The vibrations are <strong>faster</strong> when you tighten a string!</p>
+              </div>
+              <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+                <p class="font-bold text-slate-900">3. Are the vibrations faster or slower when you pluck a thinner string?</p>
+                <button onclick="revealHint(this)" class="mt-1 text-xs font-bold text-sky-700 hover:underline">Tap to reveal answer ▶</button>
+                <p class="hidden mt-1 text-emerald-700 font-bold">✅ The vibrations are <strong>faster</strong> when you pluck a thinner string!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- RIGHT PANEL: INTERACTIVE GUITAR PITCH SIMULATION & LAB NOTEBOOK (7 Columns) -->
+    <section class="lg:col-span-7 space-y-4 sm:space-y-5">
+
+      <!-- GUITAR PITCH & VIBRATION LAB CARD -->
+      <div class="bg-white rounded-3xl shadow-xl border-2 border-sky-200 overflow-hidden">
+        <!-- Simulation Header -->
+        <div class="bg-gradient-to-r from-sky-600 via-cyan-600 to-teal-600 text-white px-5 py-3 flex flex-wrap items-center justify-between gap-2">
+          <div class="flex items-center gap-2.5">
+            <span class="bg-white/20 p-1.5 rounded-xl text-lg">🎸</span>
+            <div>
+              <h2 class="font-display font-bold text-lg sm:text-xl leading-tight">Interactive Guitar Pitch &amp; Vibration Lab</h2>
+              <p class="text-xs text-sky-100 font-medium">Pluck strings, turn tuning pegs, and press frets to see &amp; hear pitch change!</p>
+            </div>
+          </div>
+          <!-- Live Pitch & Frequency Meter Pill -->
+          <div class="bg-slate-900/35 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1.5 border border-white/20">
+            <span id="simStatusDot" class="w-2.5 h-2.5 rounded-full bg-amber-300"></span>
+            <span id="simEventBanner">Ready! Pluck any string on the guitar!</span>
+          </div>
+        </div>
+
+        <!-- TACTILE GUITAR EXPERIMENT CONTROLS -->
+        <div class="bg-slate-50 border-b border-slate-200 p-3 sm:p-4 space-y-3">
+          <!-- Row 1: Select Active String + Guided Activity Step Presets -->
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center gap-1.5 flex-wrap">
+              <span class="text-xs font-extrabold uppercase tracking-wider text-slate-500">Selected String:</span>
+              <div id="stringSelectorBtns" class="flex items-center gap-1 flex-wrap">
+                <!-- Populated dynamically for Strings 1 (Thickest) to 6 (Thinnest) -->
+              </div>
+            </div>
+
+            <div class="flex items-center gap-1.5 flex-wrap">
+              <button onclick="pluckAllStrings()" class="btn-tactile px-3 py-1.5 rounded-xl text-xs font-extrabold bg-amber-400 hover:bg-amber-500 border border-amber-600 text-slate-950">
+                🎶 Strum All Strings
+              </button>
+              <button id="btnSlowMo" onclick="toggleSlowMotion()" class="btn-tactile px-2.5 py-1.5 rounded-xl text-xs font-extrabold bg-white border border-slate-300 text-slate-700 hover:bg-slate-100">
+                🐢 Slow-Mo Vibrations: OFF
+              </button>
+            </div>
+          </div>
+
+          <!-- Row 2: Book Variables — Tuning Peg (Tighten / Loosen) & Fret Finger Press (Shorten String) -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+            <!-- Variable A: Tuning Peg Tension -->
+            <div class="bg-amber-50/90 border-2 border-amber-300 rounded-2xl p-2.5 flex flex-col justify-between gap-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-extrabold text-amber-950">1. Turn Tuning Peg (Tighten / Loosen):</span>
+                <span id="tensionLabel" class="text-xs font-extrabold bg-white px-2 py-0.5 rounded-full border border-amber-300 text-amber-900">Tuned (100%)</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <button onclick="adjustTension(-15)" class="btn-tactile px-2.5 py-1.5 rounded-xl bg-white hover:bg-amber-100 border border-amber-400 text-xs font-extrabold text-amber-950 shrink-0">
+                  ↺ Loosen Peg
+                </button>
+                <input id="tensionSlider" type="range" min="60" max="150" step="5" value="100" oninput="setTension(this.value)" class="w-full accent-amber-600 cursor-pointer" />
+                <button onclick="adjustTension(15)" class="btn-tactile px-2.5 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-xs font-extrabold text-white shrink-0">
+                  ↻ Tighten Peg
+                </button>
+              </div>
+            </div>
+
+            <!-- Variable B: Press String on Neck (Shorten Vibrating Length) -->
+            <div class="bg-sky-50/90 border-2 border-sky-300 rounded-2xl p-2.5 flex flex-col justify-between gap-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-extrabold text-sky-950">2. Press Finger on Neck (String Length):</span>
+                <span id="fretLabel" class="text-xs font-extrabold bg-white px-2 py-0.5 rounded-full border border-sky-300 text-sky-900">Open (Full Length)</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <button onclick="setFretPosition(0)" id="fretBtn0" class="btn-tactile flex-1 py-1.5 rounded-xl text-xs font-extrabold bg-sky-600 text-white">
+                  Open (Long)
+                </button>
+                <button onclick="setFretPosition(1)" id="fretBtn1" class="btn-tactile flex-1 py-1.5 rounded-xl text-xs font-extrabold bg-white border border-sky-300 text-sky-900 hover:bg-sky-100">
+                  Fret 3 (Medium)
+                </button>
+                <button onclick="setFretPosition(2)" id="fretBtn2" class="btn-tactile flex-1 py-1.5 rounded-xl text-xs font-extrabold bg-white border border-sky-300 text-sky-900 hover:bg-sky-100">
+                  Fret 7 (Short)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- HTML5 INTERACTIVE GUITAR & VIBRATION WAVE CANVAS -->
+        <div id="canvasContainer" class="relative w-full h-[380px] sm:h-[420px] bg-gradient-to-b from-sky-100 to-amber-50 select-none">
+          <canvas id="guitarCanvas" class="w-full h-full block cursor-pointer"></canvas>
+
+          <!-- Live Observation Readout Card (Bottom of Canvas) -->
+          <div id="inspectorOverlay" class="absolute bottom-3 left-3 right-3 bg-white/95 backdrop-blur-sm border-2 border-sky-300 rounded-2xl p-2.5 sm:p-3 shadow-lg flex items-center justify-between gap-3">
+            <div class="flex items-center gap-3 min-w-0">
+              <div id="inspectorIcon" class="w-11 h-11 rounded-xl bg-amber-100 border border-amber-300 flex items-center justify-center text-2xl shrink-0">🎵</div>
+              <div class="min-w-0">
+                <div class="flex items-center gap-1.5 flex-wrap">
+                  <span id="inspectorName" class="font-display font-bold text-sm sm:text-base text-slate-900">Pluck any guitar string on the canvas!</span>
+                  <span id="inspectorBadge" class="text-[11px] font-extrabold px-2 py-0.5 rounded-full bg-sky-100 text-sky-800">Interactive Lab</span>
+                </div>
+                <p id="inspectorDesc" class="text-xs sm:text-sm text-slate-700 font-semibold leading-snug">
+                  Tap or swipe across the strings, turn the tuning pegs on the headstock, or press a fret on the neck!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GUIDED OBSERVATION & LAB NOTEBOOK PANEL -->
+      <div class="bg-white rounded-3xl shadow-xl border-2 border-amber-300 overflow-hidden">
+        <!-- Notebook Header & Step Tabs -->
+        <div class="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-5 py-3 flex flex-wrap items-center justify-between gap-2">
+          <div class="flex items-center gap-2">
+            <span class="text-xl">📓</span>
+            <h3 class="font-display font-bold text-lg sm:text-xl">Lab Notebook: Pitch Observation Check</h3>
+          </div>
+
+          <!-- 3-Step Scientific Method Tabs -->
+          <div class="flex items-center gap-1.5 bg-black/15 p-1 rounded-xl">
+            <button id="tabStep1" onclick="selectNotebookStep(1)" class="px-3 py-1 rounded-lg text-xs font-extrabold bg-white text-orange-700 shadow-sm transition">
+              1. Predict <span id="check-s1"></span>
+            </button>
+            <button id="tabStep2" onclick="selectNotebookStep(2)" class="px-3 py-1 rounded-lg text-xs font-extrabold text-white hover:bg-white/20 transition">
+              2. Observe <span id="check-s2"></span>
+            </button>
+            <button id="tabStep3" onclick="selectNotebookStep(3)" class="px-3 py-1 rounded-lg text-xs font-extrabold text-white hover:bg-white/20 transition">
+              3. Explain (CER) <span id="check-s3"></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- NOTEBOOK BODY -->
+        <div id="notebookContent" class="p-4 sm:p-6">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- VOCABULARY POP-UP MODAL -->
+  <div id="vocabModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4" onclick="if(event.target===this) closeVocab()">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 border-4 border-amber-400 shadow-2xl animate-pop space-y-4">
+      <div class="flex items-start justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <div id="vocabEmoji" class="text-4xl bg-amber-100 w-14 h-14 rounded-2xl flex items-center justify-center border-2 border-amber-300">🎸</div>
+          <div>
+            <span class="text-xs font-extrabold uppercase tracking-wider text-orange-600">Science Vocabulary (Page 49)</span>
+            <h3 id="vocabTitle" class="font-display font-bold text-2xl text-slate-900 capitalize">Pitch</h3>
+          </div>
+        </div>
+        <button onclick="closeVocab()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 w-9 h-9 rounded-full font-bold flex items-center justify-center">✕</button>
+      </div>
+
+      <p id="vocabDef" class="text-base text-slate-700 font-semibold leading-relaxed bg-amber-50/70 p-3.5 rounded-2xl border border-amber-200"></p>
+
+      <div class="bg-sky-50 p-3 rounded-2xl border border-sky-200 flex items-center gap-2.5">
+        <span class="text-xl">🔎</span>
+        <p id="vocabExample" class="text-sm font-bold text-sky-950"></p>
+      </div>
+
+      <div class="flex justify-end">
+        <button onclick="closeVocab()" class="btn-tactile bg-teal-600 hover:bg-teal-700 text-white font-bold px-5 py-2 rounded-xl text-sm">
+          Got it! 👍
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEACHER RESET CONFIRMATION MODAL -->
+  <div id="teacherResetModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4" onclick="if(event.target===this) closeTeacherResetModal()">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 border-4 border-rose-400 shadow-2xl animate-pop space-y-4">
+      <div class="flex items-center gap-3">
+        <span class="text-4xl">👩‍🏫</span>
+        <div>
+          <h3 class="font-display font-bold text-xl text-slate-900">Teacher Mode: Reset Classroom Session?</h3>
+          <p class="text-xs font-bold text-rose-600">Prepare Page 49 for the next group of students</p>
+        </div>
+      </div>
+      <p class="text-sm text-slate-700 font-semibold">
+        This will retune all guitar strings back to normal, clear all student Lab Notebook answers, and reset the badge progress to 0.
+      </p>
+      <div class="flex justify-end gap-2 pt-2">
+        <button onclick="closeTeacherResetModal()" class="px-4 py-2 rounded-xl text-sm font-bold bg-slate-100 hover:bg-slate-200 text-slate-700">
+          Cancel
+        </button>
+        <button onclick="executeFullReset()" class="btn-tactile px-4 py-2 rounded-xl text-sm font-bold bg-rose-600 hover:bg-rose-700 text-white">
+          🔄 Yes, Reset Everything
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CELEBRATORY SOUND SCIENTIST BADGE MODAL -->
+  <div id="badgeModal" class="hidden fixed inset-0 z-50 bg-slate-900/65 backdrop-blur-xs flex items-center justify-center p-4" onclick="if(event.target===this) closeBadgeModal()">
+    <div class="bg-gradient-to-b from-amber-50 to-white rounded-3xl max-w-md w-full p-6 border-4 border-amber-400 shadow-2xl animate-pop text-center space-y-4">
+      <div class="text-6xl mx-auto animate-bounce">🏆</div>
+      <span class="inline-block bg-amber-400 text-slate-900 text-xs font-extrabold uppercase tracking-wider px-3 py-1 rounded-full">
+        Sound &amp; Pitch Achievement
+      </span>
+      <h3 id="badgeModalTitle" class="font-display font-bold text-2xl sm:text-3xl text-slate-900">Junior Sound Scientist Progress</h3>
+      <p id="badgeModalDesc" class="text-sm sm:text-base text-slate-700 font-semibold">
+        Complete Predict, Observe, and Explain (CER) on Page 49 to earn your Sound Scientist Star Badge!
+      </p>
+      <div class="bg-white rounded-2xl p-3 border border-amber-200 grid grid-cols-3 gap-2 text-xs font-bold">
+        <div class="p-2 rounded-xl bg-sky-50 text-sky-900">
+          Predict: <span id="badgeS1Status" class="text-orange-600">Pending</span>
+        </div>
+        <div class="p-2 rounded-xl bg-emerald-50 text-emerald-900">
+          Observe: <span id="badgeS2Status" class="text-orange-600">Pending</span>
+        </div>
+        <div class="p-2 rounded-xl bg-amber-50 text-amber-900">
+          Explain: <span id="badgeS3Status" class="text-orange-600">Pending</span>
+        </div>
+      </div>
+      <button onclick="closeBadgeModal()" class="btn-tactile w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-display font-bold text-lg py-2.5 rounded-2xl">
+        Keep Experimenting! 🎸
+      </button>
+    </div>
+  </div>
+
+  <!-- APPLICATION LOGIC & ACOUSTIC GUITAR SIMULATION ENGINE -->
+  <script>
+    /* =========================================================================
+       1. WEB AUDIO SYNTHESIZER (REALISTIC PLUCKED GUITAR + UI SOUND EFFECTS)
+       ========================================================================= */
+    const SoundEngine = (() => {
+      let audioCtx = null;
+
+      function getCtx() {
+        if (!audioCtx) {
+          const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          if (AudioContextClass) audioCtx = new AudioContextClass();
+        }
+        if (audioCtx && audioCtx.state === 'suspended') {
+          audioCtx.resume().catch(() => {});
+        }
+        return audioCtx;
+      }
+
+      // Realistic acoustic guitar string pluck using harmonic oscillators + lowpass filter
+      function pluckStringSound(freqHz, thicknessFactor = 0.5) {
+        try {
+          const c = getCtx();
+          if (!c) return;
+          const now = c.currentTime;
+
+          const masterGain = c.createGain();
+          masterGain.gain.setValueAtTime(0.001, now);
+          masterGain.gain.linearRampToValueAtTime(0.24, now + 0.015);
+          masterGain.gain.exponentialRampToValueAtTime(0.0008, now + 1.8);
+
+          const filter = c.createBiquadFilter();
+          filter.type = 'lowpass';
+          // Thinner strings have brighter upper harmonics; thicker strings are warmer
+          const startCutoff = Math.min(4800, freqHz * (6.5 - thicknessFactor * 2.5));
+          filter.frequency.setValueAtTime(startCutoff, now);
+          filter.frequency.exponentialRampToValueAtTime(Math.max(220, freqHz * 1.4), now + 1.5);
+
+          // Fundamental + 2nd & 3rd harmonics
+          const osc1 = c.createOscillator();
+          osc1.type = 'triangle';
+          osc1.frequency.setValueAtTime(freqHz, now);
+
+          const osc2 = c.createOscillator();
+          osc2.type = 'sawtooth';
+          osc2.frequency.setValueAtTime(freqHz * 2, now);
+
+          const osc2Gain = c.createGain();
+          osc2Gain.gain.setValueAtTime(0.18, now);
+          osc2Gain.gain.exponentialRampToValueAtTime(0.001, now + 0.6);
+
+          osc1.connect(filter);
+          osc2.connect(osc2Gain);
+          osc2Gain.connect(filter);
+          filter.connect(masterGain);
+          masterGain.connect(c.destination);
+
+          osc1.start(now);
+          osc2.start(now);
+          osc1.stop(now + 1.85);
+          osc2.stop(now + 0.65);
+        } catch (e) { /* Safe fallback */ }
+      }
+
+      function playTone(freq, type = 'sine', duration = 0.14, gainVal = 0.11, delay = 0) {
+        try {
+          const c = getCtx();
+          if (!c) return;
+          const osc = c.createOscillator();
+          const gain = c.createGain();
+          osc.type = type;
+          osc.frequency.setValueAtTime(freq, c.currentTime + delay);
+          gain.gain.setValueAtTime(gainVal, c.currentTime + delay);
+          gain.gain.exponentialRampToValueAtTime(0.001, c.currentTime + delay + duration);
+          osc.connect(gain);
+          gain.connect(c.destination);
+          osc.start(c.currentTime + delay);
+          osc.stop(c.currentTime + delay + duration + 0.02);
+        } catch (e) { /* Safe fallback */ }
+      }
+
+      return {
+        pluckStringSound,
+        popClick() {
+          playTone(540, 'triangle', 0.08, 0.09);
+        },
+        pegTick(isTightening) {
+          playTone(isTightening ? 680 : 390, 'sine', 0.07, 0.08);
+        },
+        chimeSuccess() {
+          playTone(523.25, 'sine', 0.15, 0.12, 0);
+          playTone(659.25, 'sine', 0.15, 0.12, 0.09);
+          playTone(783.99, 'sine', 0.25, 0.14, 0.18);
+        },
+        nudgeWrong() {
+          playTone(230, 'sawtooth', 0.16, 0.08, 0);
+          playTone(195, 'sawtooth', 0.2, 0.08, 0.11);
+        },
+        celebrateBadge() {
+          [523.25, 659.25, 783.99, 1046.5].forEach((f, i) => {
+            playTone(f, 'triangle', 0.22, 0.13, i * 0.1);
+          });
+        }
+      };
+    })();
+
+    /* =========================================================================
+       2. GLOBAL STATE & PAGE 49 VOCABULARY DICTIONARY
+       ========================================================================= */
+    const state = {
+      notebookStep: 1,
+      celebratedAll: false,
+      progress: {
+        s1: false,
+        s2: false,
+        s3: false
+      },
+      answers: {
+        predict: null,
+        blanks: { b1: '', b2: '', b3: '', b4: '' },
+        activeBlank: 'b1',
+        cer: { claim: '', evidence: '', reasoning: '' }
+      }
+    };
+
+    const VOCAB_DATA = {
+      'stringed instrument': {
+        emoji: '🎸',
+        title: 'Stringed Instrument',
+        def: 'A musical instrument (such as a guitar, violin, or harp) that makes sound when its stretched strings vibrate.',
+        example: 'Example: A guitar has thick and thin strings stretched over a hollow body.'
+      },
+      tune: {
+        emoji: '🎛️',
+        title: 'Tune',
+        def: 'To adjust the pegs on an instrument so each string is stretched to the exact tightness needed to play the right pitch.',
+        example: 'Example: Turning a guitar peg makes a string tighter or looser to tune it.'
+      },
+      pitch: {
+        emoji: '🎵',
+        title: 'Pitch',
+        def: 'How high or low a musical note sounds. Fast vibrations make a high-pitched sound; slow vibrations make a low-pitched sound.',
+        example: 'Example: A thin, tight string vibrates fast and makes a high-pitched note.'
+      },
+      tighten: {
+        emoji: '⬆️',
+        title: 'Tighten',
+        def: 'To turn a peg so the string is pulled harder and stretched more tightly. Tighter strings vibrate faster and make a higher pitch.',
+        example: 'Example: Turning the peg to tighten a string raises its pitch.'
+      },
+      loosen: {
+        emoji: '⬇️',
+        title: 'Loosen',
+        def: 'To turn a peg the other way so the string is less tight. Looser strings vibrate more slowly and make a lower pitch.',
+        example: 'Example: Loosening a string lowers its pitch.'
+      }
+    };
+
+    /* =========================================================================
+       3. VOCABULARY POPUP, BOOK SELF-CHECK & CLEAR ENGLISH READ-ALOUD
+       ========================================================================= */
+    function showVocab(key) {
+      SoundEngine.popClick();
+      const item = VOCAB_DATA[key];
+      if (!item) return;
+      document.getElementById('vocabEmoji').textContent = item.emoji;
+      document.getElementById('vocabTitle').textContent = item.title;
+      document.getElementById('vocabDef').textContent = item.def;
+      document.getElementById('vocabExample').textContent = item.example;
+      document.getElementById('vocabModal').classList.remove('hidden');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocabModal').classList.add('hidden');
+    }
+
+    function toggleBookQuestions() {
+      SoundEngine.popClick();
+      const panel = document.getElementById('panel-q49');
+      const icon = document.getElementById('icon-q49');
+      const isHidden = panel.classList.contains('hidden');
+      panel.classList.toggle('hidden');
+      icon.textContent = isHidden ? 'Hide Hints ▲' : 'Show Hints ▼';
+    }
+
+    function revealHint(btn) {
+      SoundEngine.chimeSuccess();
+      const ans = btn.nextElementSibling;
+      if (ans) ans.classList.remove('hidden');
+      btn.classList.add('hidden');
+    }
+
+    function getClearEnglishVoice() {
+      if (!('speechSynthesis' in window)) return null;
+      const voices = window.speechSynthesis.getVoices() || [];
+      return (
+        voices.find(v => v.lang === 'en-US' && (v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Samantha') || v.name.includes('Microsoft'))) ||
+        voices.find(v => v.lang.startsWith('en-US')) ||
+        voices.find(v => v.lang.startsWith('en-GB')) ||
+        voices.find(v => v.lang.startsWith('en')) ||
+        null
+      );
+    }
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.onvoiceschanged = getClearEnglishVoice;
+    }
+
+    function speakCurrentPage() {
+      SoundEngine.popClick();
+      if (!('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      const article = document.getElementById('textbookPage49');
+      const text = Array.from(article.querySelectorAll('h2, p, li'))
+        .map(el => el.innerText)
+        .join(' ');
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'en-US';
+      const clearVoice = getClearEnglishVoice();
+      if (clearVoice) utter.voice = clearVoice;
+      utter.rate = 0.92;
+      window.speechSynthesis.speak(utter);
+    }
+
+    /* =========================================================================
+       4. NOTEBOOK STEP NAVIGATION & BADGE PROGRESS
+       ========================================================================= */
+    function selectNotebookStep(step) {
+      SoundEngine.popClick();
+      state.notebookStep = step;
+      [1, 2, 3].forEach(s => {
+        const tab = document.getElementById('tabStep' + s);
+        if (s === step) {
+          tab.className = 'px-3 py-1 rounded-lg text-xs font-extrabold bg-white text-orange-700 shadow-sm transition';
+        } else {
+          tab.className = 'px-3 py-1 rounded-lg text-xs font-extrabold text-white hover:bg-white/20 transition';
+        }
+      });
+      renderNotebook();
+    }
+
+    function updateProgressUI() {
+      const p = state.progress;
+      const doneCount = Object.values(p).filter(Boolean).length;
+      document.getElementById('headerProgressText').textContent = `${doneCount} / 3 Tasks`;
+
+      document.getElementById('check-s1').textContent = p.s1 ? '✅' : '';
+      document.getElementById('check-s2').textContent = p.s2 ? '✅' : '';
+      document.getElementById('check-s3').textContent = p.s3 ? '✅' : '';
+
+      document.getElementById('badgeS1Status').textContent = p.s1 ? 'Done! ⭐' : 'Pending';
+      document.getElementById('badgeS2Status').textContent = p.s2 ? 'Done! ⭐' : 'Pending';
+      document.getElementById('badgeS3Status').textContent = p.s3 ? 'Done! ⭐' : 'Pending';
+
+      if (doneCount === 3 && !state.celebratedAll) {
+        state.celebratedAll = true;
+        SoundEngine.celebrateBadge();
+        document.getElementById('badgeModalTitle').textContent = '🎉 Official Sound Scientist!';
+        document.getElementById('badgeModalDesc').textContent = 'Fantastic job! You discovered how string thickness, tightness, and length control vibration speed and pitch!';
+        openBadgeModal();
+      }
+    }
+
+    function openBadgeModal() {
+      document.getElementById('badgeModal').classList.remove('hidden');
+    }
+    function closeBadgeModal() {
+      document.getElementById('badgeModal').classList.add('hidden');
+    }
+
+    /* =========================================================================
+       5. GUIDED OBSERVATION & LAB NOTEBOOK (PAGE 49 QUESTIONS)
+       ========================================================================= */
+    function renderNotebook() {
+      const container = document.getElementById('notebookContent');
+      const step = state.notebookStep;
+
+      if (step === 1) {
+        const chosen = state.answers.predict;
+        container.innerHTML = `
+          <div class="space-y-3 animate-pop">
+            <div class="flex items-center justify-between flex-wrap gap-1">
+              <span class="text-xs font-extrabold uppercase tracking-wider text-orange-600">Step 1 • Activity Prediction (Page 49)</span>
+              <span class="text-xs font-bold text-slate-500">Test your prediction by turning a tuning peg!</span>
+            </div>
+            <p class="font-bold text-slate-900 text-base">
+              Suppose you pluck a string, and then you <strong>loosen</strong> the string by turning the peg the other way. What will happen to the pitch when you pluck it again?
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+              ${[
+                { id: 'higher', label: '⬆️ Higher pitch (vibrates faster)', ok: false },
+                { id: 'lower', label: '⬇️ Lower pitch (vibrates slower)', ok: true },
+                { id: 'same', label: '➡️ The exact same pitch', ok: false }
+              ].map(opt => `
+                <button onclick="answerPredict('${opt.id}', ${opt.ok})" class="btn-tactile p-3 rounded-2xl border-2 text-left font-bold text-sm transition ${
+                  chosen === opt.id
+                    ? (opt.ok ? 'bg-emerald-50 border-emerald-500 text-emerald-900' : 'bg-rose-50 border-rose-400 text-rose-900')
+                    : 'bg-slate-50 hover:bg-amber-50 border-slate-200 text-slate-800'
+                }">
+                  ${opt.label}
+                </button>
+              `).join('')}
+            </div>
+            ${chosen ? `
+              <div class="p-3 rounded-2xl text-sm font-bold ${chosen === 'lower' ? 'bg-emerald-100 text-emerald-900' : 'bg-amber-100 text-amber-900'}">
+                ${chosen === 'lower'
+                  ? '✅ Correct! Loosening a string makes it vibrate more slowly, which gives a lower-pitched sound. Try clicking "↺ Loosen Peg" above to hear it!'
+                  : '💡 Try it on the guitar above! Click "↺ Loosen Peg" and pluck the string to watch the wave speed and listen to the note.'}
+              </div>
+            ` : ''}
+          </div>
+        `;
+      } else if (step === 2) {
+        const blanks = state.answers.blanks;
+        const activeB = state.answers.activeBlank;
+        const wordBank = ['higher-pitched', 'lower-pitched', 'faster'];
+        container.innerHTML = `
+          <div class="space-y-3 animate-pop">
+            <div class="flex items-center justify-between flex-wrap gap-1">
+              <span class="text-xs font-extrabold uppercase tracking-wider text-orange-600">Step 2 • Observation Questions 1–3 (Page 49)</span>
+              <span class="text-xs font-bold text-slate-600">Tap a blank, then tap a phrase from the Word Bank!</span>
+            </div>
+
+            <!-- Word Bank -->
+            <div class="flex flex-wrap items-center gap-2 bg-amber-50 p-2.5 rounded-2xl border border-amber-300">
+              <span class="text-xs font-extrabold text-amber-900 uppercase">Word Bank:</span>
+              ${wordBank.map(w => `
+                <button onclick="fillWordBlank('${w}')" class="btn-tactile bg-white hover:bg-sky-100 border-2 border-sky-300 text-sky-950 font-extrabold text-xs sm:text-sm px-3 py-1 rounded-xl">
+                  ${w}
+                </button>
+              `).join('')}
+            </div>
+
+            <!-- Textbook Questions 1, 2, 3 -->
+            <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200 space-y-2.5 text-sm sm:text-base font-semibold leading-relaxed">
+              <p>
+                <strong>1a.</strong> The more tightly stretched the string, the
+                <button onclick="selectBlank('b1')" class="px-3 py-0.5 rounded-lg border-2 font-extrabold ${activeB === 'b1' ? 'border-orange-500 bg-orange-100' : 'border-slate-300 bg-white'} text-sky-900">
+                  ${blanks.b1 || '________'}
+                </button>
+                the note.
+              </p>
+              <p>
+                <strong>1b.</strong> The thicker the string, the
+                <button onclick="selectBlank('b2')" class="px-3 py-0.5 rounded-lg border-2 font-extrabold ${activeB === 'b2' ? 'border-orange-500 bg-orange-100' : 'border-slate-300 bg-white'} text-sky-900">
+                  ${blanks.b2 || '________'}
+                </button>
+                the note.
+              </p>
+              <p>
+                <strong>2.</strong> When you tighten a string, the vibrations are
+                <button onclick="selectBlank('b3')" class="px-3 py-0.5 rounded-lg border-2 font-extrabold ${activeB === 'b3' ? 'border-orange-500 bg-orange-100' : 'border-slate-300 bg-white'} text-sky-900">
+                  ${blanks.b3 || '________'}
+                </button>.
+              </p>
+              <p>
+                <strong>3.</strong> When you pluck a thinner string, the vibrations are
+                <button onclick="selectBlank('b4')" class="px-3 py-0.5 rounded-lg border-2 font-extrabold ${activeB === 'b4' ? 'border-orange-500 bg-orange-100' : 'border-slate-300 bg-white'} text-sky-900">
+                  ${blanks.b4 || '________'}
+                </button>.
+              </p>
+            </div>
+
+            <div class="flex items-center justify-between flex-wrap gap-2">
+              <span id="p49BlankStatus" class="text-xs sm:text-sm font-bold ${state.progress.s2 ? 'text-emerald-700' : 'text-slate-600'}">
+                ${state.progress.s2 ? '✅ Excellent! All 4 textbook observation questions are correct!' : 'Complete all 4 blanks and tap Check Answers.'}
+              </span>
+              <button onclick="checkBlanks()" class="btn-tactile bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs sm:text-sm px-4 py-1.5 rounded-xl">
+                Check Answers ✓
+              </button>
+            </div>
+          </div>
+        `;
+      } else {
+        const cer = state.answers.cer;
+        container.innerHTML = `
+          <div class="space-y-3 animate-pop">
+            <span class="text-xs font-extrabold uppercase tracking-wider text-orange-600">Step 3 • Explain with CER (Page 49)</span>
+            <p class="font-bold text-slate-900 text-sm sm:text-base">
+              Explain how pressing a string down on the neck (making the vibrating string shorter) changes the pitch:
+            </p>
+            <div class="space-y-2 text-sm">
+              <div>
+                <label class="font-extrabold text-sky-800 block">Claim (Does the pitch get higher or lower?):</label>
+                <input type="text" value="${cer.claim}" oninput="updateCER('claim', this.value)" placeholder="When I press a string down on the neck, the pitch becomes..." class="w-full mt-1 px-3 py-2 rounded-xl border border-slate-300 font-semibold focus:outline-none focus:ring-2 focus:ring-orange-400" />
+              </div>
+              <div>
+                <label class="font-extrabold text-emerald-800 block">Evidence (What did you see and hear in the Guitar Lab?):</label>
+                <input type="text" value="${cer.evidence}" oninput="updateCER('evidence', this.value)" placeholder="I observed on the guitar that the vibrating part of the string got shorter and..." class="w-full mt-1 px-3 py-2 rounded-xl border border-slate-300 font-semibold focus:outline-none focus:ring-2 focus:ring-orange-400" />
+              </div>
+              <div>
+                <label class="font-extrabold text-amber-800 block">Reasoning (How does vibration speed affect pitch?):</label>
+                <input type="text" value="${cer.reasoning}" oninput="updateCER('reasoning', this.value)" placeholder="Shorter strings vibrate faster, and faster vibrations make a..." class="w-full mt-1 px-3 py-2 rounded-xl border border-slate-300 font-semibold focus:outline-none focus:ring-2 focus:ring-orange-400" />
+              </div>
+            </div>
+            <div class="flex items-center justify-between pt-1">
+              <span class="text-xs font-bold ${state.progress.s3 ? 'text-emerald-700' : 'text-slate-500'}">
+                ${state.progress.s3 ? '✅ CER Explanation Saved!' : 'Write a few words in all 3 boxes to earn your Star Badge!'}
+              </span>
+              <button onclick="saveCER()" class="btn-tactile bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm px-4 py-2 rounded-xl">
+                Save Explanation ✓
+              </button>
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    function answerPredict(id, isCorrect) {
+      state.answers.predict = id;
+      if (isCorrect) {
+        SoundEngine.chimeSuccess();
+        state.progress.s1 = true;
+      } else {
+        SoundEngine.nudgeWrong();
+      }
+      renderNotebook();
+      updateProgressUI();
+    }
+
+    function selectBlank(bKey) {
+      SoundEngine.popClick();
+      state.answers.activeBlank = bKey;
+      renderNotebook();
+    }
+
+    function fillWordBlank(word) {
+      SoundEngine.popClick();
+      const bKey = state.answers.activeBlank || 'b1';
+      state.answers.blanks[bKey] = word;
+      const order = ['b1', 'b2', 'b3', 'b4'];
+      const nextIdx = order.indexOf(bKey) + 1;
+      if (nextIdx < order.length) state.answers.activeBlank = order[nextIdx];
+      renderNotebook();
+    }
+
+    function checkBlanks() {
+      const b = state.answers.blanks;
+      const isOk = (
+        b.b1 === 'higher-pitched' &&
+        b.b2 === 'lower-pitched' &&
+        b.b3 === 'faster' &&
+        b.b4 === 'faster'
+      );
+      if (isOk) {
+        SoundEngine.chimeSuccess();
+        state.progress.s2 = true;
+        renderNotebook();
+        updateProgressUI();
+      } else {
+        SoundEngine.nudgeWrong();
+        const status = document.getElementById('p49BlankStatus');
+        if (status) status.textContent = '❌ Check again: Tighter = higher-pitched; thicker = lower-pitched; tighter & thinner strings both vibrate faster!';
+      }
+    }
+
+    function updateCER(field, val) {
+      state.answers.cer[field] = val;
+    }
+
+    function saveCER() {
+      const cer = state.answers.cer;
+      if (cer.claim.trim().length >= 3 && cer.evidence.trim().length >= 3 && cer.reasoning.trim().length >= 3) {
+        SoundEngine.chimeSuccess();
+        state.progress.s3 = true;
+        renderNotebook();
+        updateProgressUI();
+      } else {
+        SoundEngine.nudgeWrong();
+      }
+    }
+
+    /* =========================================================================
+       6. INTERACTIVE 6-STRING GUITAR SIMULATION & VIBRATION VISUALIZER
+       ========================================================================= */
+    const canvas = document.getElementById('guitarCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // 6 Guitar Strings ordered from Thickest (top, low pitch) to Thinnest (bottom, high pitch)
+    const GUITAR_STRINGS = [
+      { index: 0, note: 'E2', label: 'String 1 (Thickest)', thickness: 5.2, baseFreq: 110, color: '#D97706', tension: 100, fret: 0, amp: 0, phase: 0 },
+      { index: 1, note: 'A2', label: 'String 2 (Thick)', thickness: 4.3, baseFreq: 146.8, color: '#EAB308', tension: 100, fret: 0, amp: 0, phase: 0 },
+      { index: 2, note: 'D3', label: 'String 3 (Medium-Thick)', thickness: 3.5, baseFreq: 196.0, color: '#CBD5E1', tension: 100, fret: 0, amp: 0, phase: 0 },
+      { index: 3, note: 'G3', label: 'String 4 (Medium-Thin)', thickness: 2.7, baseFreq: 246.9, color: '#E2E8F0', tension: 100, fret: 0, amp: 0, phase: 0 },
+      { index: 4, note: 'B3', label: 'String 5 (Thin)', thickness: 2.0, baseFreq: 329.6, color: '#F1F5F9', tension: 100, fret: 0, amp: 0, phase: 0 },
+      { index: 5, note: 'E4', label: 'String 6 (Thinnest)', thickness: 1.4, baseFreq: 440.0, color: '#FFFFFF', tension: 100, fret: 0, amp: 0, phase: 0 }
+    ];
+
+    const guitarLab = {
+      selectedStringIdx: 0,
+      slowMo: false,
+      lastPluckedIdx: 0,
+      lastFreqHz: 110,
+      stringHitRects: [],
+      pegHitRects: [],
+      fretHitRects: []
+    };
+
+    function computeStringFrequency(str) {
+      // Higher tension = higher frequency; shorter string (higher fret) = higher frequency
+      const tensionMult = str.tension / 100;
+      const lengthMult = str.fret === 0 ? 1.0 : (str.fret === 1 ? 1.26 : 1.5);
+      return Math.round(str.baseFreq * tensionMult * lengthMult);
+    }
+
+    function renderStringSelectorButtons() {
+      const container = document.getElementById('stringSelectorBtns');
+      container.innerHTML = GUITAR_STRINGS.map((s, idx) => {
+        const isSel = idx === guitarLab.selectedStringIdx;
+        const shortName = idx === 0 ? '1 (Thickest)' : idx === 5 ? '6 (Thinnest)' : `#${idx + 1}`;
+        return `
+          <button onclick="selectGuitarString(${idx}, true)" class="btn-tactile px-2.5 py-1 rounded-xl text-xs font-extrabold border-2 transition ${
+            isSel
+              ? 'bg-sky-600 border-sky-800 text-white'
+              : 'bg-white border-slate-300 text-slate-700 hover:bg-sky-50'
+          }">
+            ${shortName}
+          </button>
+        `;
+      }).join('');
+    }
+
+    function selectGuitarString(idx, alsoPluck = false) {
+      guitarLab.selectedStringIdx = idx;
+      const s = GUITAR_STRINGS[idx];
+      document.getElementById('tensionSlider').value = String(s.tension);
+      document.getElementById('tensionLabel').textContent = `${s.tension}% ${s.tension > 100 ? '(Tight)' : s.tension < 100 ? '(Loose)' : '(Tuned)'}`;
+      updateFretButtonsUI(s.fret);
+      renderStringSelectorButtons();
+      if (alsoPluck) {
+        pluckString(idx);
+      }
+    }
+
+    function pluckString(idx) {
+      guitarLab.selectedStringIdx = idx;
+      guitarLab.lastPluckedIdx = idx;
+      renderStringSelectorButtons();
+
+      const s = GUITAR_STRINGS[idx];
+      const freq = computeStringFrequency(s);
+      guitarLab.lastFreqHz = freq;
+
+      // Trigger visual vibration amplitude & audio pluck
+      s.amp = 13;
+      s.phase = 0;
+      SoundEngine.pluckStringSound(freq, (5 - idx) / 5);
+
+      document.getElementById('tensionSlider').value = String(s.tension);
+      document.getElementById('tensionLabel').textContent = `${s.tension}% ${s.tension > 100 ? '(Tight)' : s.tension < 100 ? '(Loose)' : '(Tuned)'}`;
+      updateFretButtonsUI(s.fret);
+
+      const pitchCategory = freq >= 310 ? 'HIGH-PITCHED' : freq >= 185 ? 'MEDIUM-PITCHED' : 'LOW-PITCHED';
+      const vibSpeed = freq >= 310 ? 'VERY FAST vibrations' : freq >= 185 ? 'MEDIUM vibrations' : 'SLOWER vibrations';
+
+      document.getElementById('simStatusDot').className = freq >= 310 ? 'w-2.5 h-2.5 rounded-full bg-amber-300' : 'w-2.5 h-2.5 rounded-full bg-emerald-400';
+      document.getElementById('simEventBanner').textContent = `${s.label} • ${pitchCategory} (${freq} Hz)`;
+
+      updateInspectorCard(
+        freq >= 310 ? '🎶' : '🎸',
+        `${s.label} — ${pitchCategory} Note (${freq} Hz)`,
+        vibSpeed,
+        `Thickness: <strong>${idx <= 1 ? 'Thick' : idx >= 4 ? 'Thin' : 'Medium'}</strong> • Tightness: <strong>${s.tension}%</strong> • Length: <strong>${s.fret === 0 ? 'Full (Open)' : s.fret === 1 ? 'Medium (Fret 3)' : 'Short (Fret 7)'}</strong>. Notice the ${vibSpeed.toLowerCase()}!`,
+        freq >= 310 ? 'bg-amber-100 text-amber-900' : 'bg-sky-100 text-sky-900'
+      );
+    }
+
+    function pluckAllStrings() {
+      GUITAR_STRINGS.forEach((s, idx) => {
+        setTimeout(() => pluckString(idx), idx * 95);
+      });
+    }
+
+    function setTension(val) {
+      const s = GUITAR_STRINGS[guitarLab.selectedStringIdx];
+      const oldVal = s.tension;
+      s.tension = Number(val);
+      SoundEngine.pegTick(s.tension >= oldVal);
+      document.getElementById('tensionLabel').textContent = `${s.tension}% ${s.tension > 100 ? '(Tighter)' : s.tension < 100 ? '(Looser)' : '(Tuned)'}`;
+      pluckString(guitarLab.selectedStringIdx);
+    }
+
+    function adjustTension(delta) {
+      const s = GUITAR_STRINGS[guitarLab.selectedStringIdx];
+      const nextVal = Math.max(60, Math.min(150, s.tension + delta));
+      document.getElementById('tensionSlider').value = String(nextVal);
+      setTension(nextVal);
+    }
+
+    function setFretPosition(fretLevel) {
+      const s = GUITAR_STRINGS[guitarLab.selectedStringIdx];
+      s.fret = fretLevel;
+      updateFretButtonsUI(fretLevel);
+      pluckString(guitarLab.selectedStringIdx);
+    }
+
+    function updateFretButtonsUI(fretLevel) {
+      const labels = ['Open (Full Length)', 'Fret 3 (Medium)', 'Fret 7 (Shorter)'];
+      document.getElementById('fretLabel').textContent = labels[fretLevel];
+      [0, 1, 2].forEach(f => {
+        const btn = document.getElementById('fretBtn' + f);
+        if (f === fretLevel) {
+          btn.className = 'btn-tactile flex-1 py-1.5 rounded-xl text-xs font-extrabold bg-sky-600 text-white';
+        } else {
+          btn.className = 'btn-tactile flex-1 py-1.5 rounded-xl text-xs font-extrabold bg-white border border-sky-300 text-sky-900 hover:bg-sky-100';
+        }
+      });
+    }
+
+    function toggleSlowMotion() {
+      SoundEngine.popClick();
+      guitarLab.slowMo = !guitarLab.slowMo;
+      const btn = document.getElementById('btnSlowMo');
+      btn.textContent = guitarLab.slowMo ? '🐢 Slow-Mo Vibrations: ON' : '🐢 Slow-Mo Vibrations: OFF';
+      btn.classList.toggle('bg-amber-200', guitarLab.slowMo);
+    }
+
+    function updateInspectorCard(emoji, title, badge, desc, badgeClass) {
+      document.getElementById('inspectorIcon').textContent = emoji;
+      document.getElementById('inspectorName').textContent = title;
+      const bEl = document.getElementById('inspectorBadge');
+      bEl.textContent = badge;
+      bEl.className = `text-[11px] font-extrabold px-2 py-0.5 rounded-full ${badgeClass}`;
+      document.getElementById('inspectorDesc').innerHTML = desc;
+    }
+
+    /* ---------------- CANVAS INTERACTION (CLICK / SWIPE STRINGS & PEGS) ---------------- */
+    let isPointerDown = false;
+    let lastSwipedString = -1;
+
+    function handleCanvasInteract(clientX, clientY, isSwipe = false) {
+      const rect = canvas.getBoundingClientRect();
+      const x = clientX - rect.left;
+      const y = clientY - rect.top;
+
+      // 1. Check Tuning Pegs on Headstock (if clicked)
+      if (!isSwipe) {
+        for (const p of guitarLab.pegHitRects) {
+          if (Math.hypot(x - p.cx, y - p.cy) <= 15) {
+            selectGuitarString(p.stringIdx, false);
+            adjustTension(p.isTighten ? 15 : -15);
+            return;
+          }
+        }
+
+        // 2. Check Fret Zones along Neck
+        for (const f of guitarLab.fretHitRects) {
+          if (x >= f.x && x <= f.x + f.w && y >= f.y && y <= f.y + f.h) {
+            selectGuitarString(f.stringIdx, false);
+            setFretPosition(f.fretLevel);
+            return;
+          }
+        }
+      }
+
+      // 3. Check String Pluck / Strum
+      for (const sr of guitarLab.stringHitRects) {
+        if (x >= sr.x1 && x <= sr.x2 && Math.abs(y - sr.y) <= 11) {
+          if (!isSwipe || lastSwipedString !== sr.index) {
+            lastSwipedString = sr.index;
+            pluckString(sr.index);
+          }
+          return;
+        }
+      }
+    }
+
+    canvas.addEventListener('mousedown', (e) => {
+      isPointerDown = true;
+      lastSwipedString = -1;
+      handleCanvasInteract(e.clientX, e.clientY, false);
+    });
+    canvas.addEventListener('mousemove', (e) => {
+      if (isPointerDown) handleCanvasInteract(e.clientX, e.clientY, true);
+    });
+    window.addEventListener('mouseup', () => {
+      isPointerDown = false;
+      lastSwipedString = -1;
+    });
+
+    canvas.addEventListener('touchstart', (e) => {
+      if (e.touches.length > 0) {
+        isPointerDown = true;
+        lastSwipedString = -1;
+        handleCanvasInteract(e.touches[0].clientX, e.touches[0].clientY, false);
+      }
+    }, { passive: true });
+    canvas.addEventListener('touchmove', (e) => {
+      if (isPointerDown && e.touches.length > 0) {
+        handleCanvasInteract(e.touches[0].clientX, e.touches[0].clientY, true);
+      }
+    }, { passive: true });
+    canvas.addEventListener('touchend', () => {
+      isPointerDown = false;
+      lastSwipedString = -1;
+    });
+
+    /* =========================================================================
+       7. HTML5 CANVAS GUITAR & REAL-TIME VIBRATION WAVE RENDERER
+       ========================================================================= */
+    function resizeCanvas() {
+      const container = document.getElementById('canvasContainer');
+      const rect = container.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    window.addEventListener('resize', resizeCanvas);
+
+    let lastTimestamp = 0;
+
+    function renderLoop(timestamp) {
+      const dt = Math.min(0.05, (timestamp - lastTimestamp) / 1000 || 0.016);
+      lastTimestamp = timestamp;
+
+      const w = canvas.clientWidth;
+      const h = canvas.clientHeight;
+      ctx.clearRect(0, 0, w, h);
+
+      drawGuitarSimulation(w, h, dt, timestamp / 1000);
+      requestAnimationFrame(renderLoop);
+    }
+
+    function drawGuitarSimulation(w, h, dt, timeSec) {
+      // Soft Music Studio Backdrop
+      const bg = ctx.createLinearGradient(0, 0, 0, h);
+      bg.addColorStop(0, '#E0F2FE');
+      bg.addColorStop(0.65, '#FEFCE8');
+      bg.addColorStop(1, '#FEF3C7');
+      ctx.fillStyle = bg;
+      ctx.fillRect(0, 0, w, h);
+
+      // Top Sound Wave Oscilloscope Strip (Visualizes Vibration Speed!)
+      drawVibrationOscilloscope(w, 54, timeSec);
+
+      // Guitar Geometry Coordinates
+      const topY = 74;
+      const bottomY = h - 86;
+      const guitarH = bottomY - topY;
+      const centerY = topY + guitarH / 2;
+
+      const headstockX = 24;
+      const headstockW = Math.min(92, w * 0.14);
+      const nutX = headstockX + headstockW;
+      const bodyStartX = w * 0.56;
+      const bridgeX = w - Math.max(46, w * 0.08);
+
+      // 1. Acoustic Wooden Guitar Body (Right Side)
+      ctx.save();
+      ctx.fillStyle = '#D97706';
+      ctx.strokeStyle = '#78350F';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.roundRect(bodyStartX, topY - 12, w - bodyStartX - 14, guitarH + 24, 34);
+      ctx.fill();
+      ctx.stroke();
+
+      // Inner warm spruce wood highlight
+      ctx.fillStyle = '#F59E0B';
+      ctx.beginPath();
+      ctx.roundRect(bodyStartX + 8, topY - 4, w - bodyStartX - 30, guitarH + 8, 28);
+      ctx.fill();
+
+      // Sound Hole & Decorative Rosette
+      const holeX = bodyStartX + (bridgeX - bodyStartX) * 0.44;
+      const holeR = Math.min(54, guitarH * 0.34);
+      ctx.fillStyle = '#FEF3C7';
+      ctx.beginPath();
+      ctx.arc(holeX, centerY, holeR + 7, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = '#291509';
+      ctx.beginPath();
+      ctx.arc(holeX, centerY, holeR, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Wooden Bridge (Anchor point on right)
+      ctx.fillStyle = '#451A03';
+      ctx.beginPath();
+      ctx.roundRect(bridgeX - 7, topY + 6, 14, guitarH - 12, 5);
+      ctx.fill();
+      ctx.restore();
+
+      // 2. Wooden Guitar Neck & Fretboard
+      ctx.save();
+      ctx.fillStyle = '#78350F';
+      ctx.strokeStyle = '#451A03';
+      ctx.lineWidth = 2.5;
+      ctx.fillRect(nutX, topY + 8, bodyStartX - nutX + 12, guitarH - 16);
+      ctx.strokeRect(nutX, topY + 8, bodyStartX - nutX + 12, guitarH - 16);
+
+      // White Bone Nut on Left of Neck
+      ctx.fillStyle = '#FFFBEB';
+      ctx.fillRect(nutX - 4, topY + 7, 8, guitarH - 14);
+
+      // Metal Fret Bars along the Neck (Fret 3 & Fret 7 interactive zones)
+      const neckLen = bodyStartX - nutX;
+      const fret1X = nutX + neckLen * 0.32;
+      const fret2X = nutX + neckLen * 0.62;
+      [fret1X, fret2X].forEach((fx, i) => {
+        ctx.strokeStyle = '#FDE68A';
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        ctx.moveTo(fx, topY + 9);
+        ctx.lineTo(fx, bottomY - 9);
+        ctx.stroke();
+
+        ctx.fillStyle = 'rgba(254, 243, 199, 0.85)';
+        ctx.font = 'bold 10px Nunito, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(i === 0 ? 'Fret 3' : 'Fret 7', fx - 22, topY + 21);
+      });
+      ctx.restore();
+
+      // 3. Headstock & Interactive Tuning Pegs (Left Side)
+      ctx.save();
+      ctx.fillStyle = '#B45309';
+      ctx.strokeStyle = '#451A03';
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      ctx.roundRect(headstockX, topY + 2, headstockW, guitarH - 4, 14);
+      ctx.fill();
+      ctx.stroke();
+      ctx.restore();
+
+      // 4. Draw All 6 Guitar Strings + Vibrations + Pegs + Fret Finger Markers
+      guitarLab.stringHitRects = [];
+      guitarLab.pegHitRects = [];
+      guitarLab.fretHitRects = [];
+
+      const stringSpacing = (guitarH - 42) / 5;
+      const firstStringY = topY + 28;
+
+      GUITAR_STRINGS.forEach((s, idx) => {
+        const sy = firstStringY + idx * stringSpacing;
+        const isSelected = idx === guitarLab.selectedStringIdx;
+
+        // Register hit boxes for string plucking & fret pressing
+        guitarLab.stringHitRects.push({ index: idx, x1: nutX, x2: bridgeX, y: sy });
+        guitarLab.fretHitRects.push({ stringIdx: idx, fretLevel: 1, x: nutX + 10, y: sy - 10, w: fret1X - nutX - 10, h: 20 });
+        guitarLab.fretHitRects.push({ stringIdx: idx, fretLevel: 2, x: fret1X + 4, y: sy - 10, w: fret2X - fret1X - 4, h: 20 });
+
+        // Interactive Tuning Peg Knob on Headstock
+        const pegX = headstockX + (idx % 2 === 0 ? headstockW * 0.34 : headstockW * 0.68);
+        guitarLab.pegHitRects.push({ stringIdx: idx, cx: pegX, cy: sy, isTighten: true });
+
+        ctx.save();
+        ctx.fillStyle = isSelected ? '#FACC15' : '#FDE047';
+        ctx.strokeStyle = isSelected ? '#DC2626' : '#854D0E';
+        ctx.lineWidth = isSelected ? 2.5 : 1.5;
+        ctx.beginPath();
+        ctx.arc(pegX, sy, 9, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+        // Peg tuning slot line rotated by tension
+        const pegAngle = ((s.tension - 100) / 50) * 1.2;
+        ctx.beginPath();
+        ctx.moveTo(pegX - Math.cos(pegAngle) * 5, sy - Math.sin(pegAngle) * 5);
+        ctx.lineTo(pegX + Math.cos(pegAngle) * 5, sy + Math.sin(pegAngle) * 5);
+        ctx.stroke();
+        ctx.restore();
+
+        // String segment from Peg to Nut
+        ctx.strokeStyle = '#94A3B8';
+        ctx.lineWidth = Math.max(1.2, s.thickness * 0.65);
+        ctx.beginPath();
+        ctx.moveTo(pegX, sy);
+        ctx.lineTo(nutX, sy);
+        ctx.stroke();
+
+        // Determine Vibrating Start Point (Nut if open, or Fret 3 / Fret 7 if finger pressed!)
+        const vibrateStartX = s.fret === 0 ? nutX : (s.fret === 1 ? fret1X : fret2X);
+
+        // Non-vibrating part between Nut and Pressed Finger
+        if (vibrateStartX > nutX) {
+          ctx.strokeStyle = '#64748B';
+          ctx.lineWidth = s.thickness;
+          ctx.beginPath();
+          ctx.moveTo(nutX, sy);
+          ctx.lineTo(vibrateStartX, sy);
+          ctx.stroke();
+        }
+
+        // Advance vibration physics
+        const freq = computeStringFrequency(s);
+        if (s.amp > 0.05) {
+          const speedScale = guitarLab.slowMo ? 0.14 : 0.65;
+          s.phase += dt * freq * speedScale;
+          s.amp *= Math.pow(0.28, dt);
+        } else {
+          s.amp = 0;
+        }
+
+        // Draw Vibrating String Segment (from vibrateStartX to bridgeX)
+        ctx.save();
+        ctx.strokeStyle = isSelected ? '#38BDF8' : s.color;
+        if (s.amp > 0.5) {
+          ctx.shadowColor = '#FACC15';
+          ctx.shadowBlur = 8;
+        }
+        ctx.lineWidth = s.thickness;
+        ctx.beginPath();
+        const segLen = bridgeX - vibrateStartX;
+        const steps = 36;
+        for (let i = 0; i <= steps; i++) {
+          const ratio = i / steps;
+          const px = vibrateStartX + ratio * segLen;
+          const envelope = Math.sin(ratio * Math.PI);
+          const displacement = Math.sin(s.phase) * s.amp * envelope;
+          if (i === 0) ctx.moveTo(px, sy + displacement);
+          else ctx.lineTo(px, sy + displacement);
+        }
+        ctx.stroke();
+        ctx.restore();
+
+        // Draw Cartoon Finger Pressing Down on Fret if active
+        if (s.fret > 0) {
+          ctx.save();
+          ctx.fillStyle = '#FDBA74';
+          ctx.strokeStyle = '#9A3412';
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.arc(vibrateStartX - 6, sy, 8.5, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.stroke();
+          ctx.restore();
+        }
+
+        // String Thickness Tag near Bridge
+        if (idx === 0 || idx === 5) {
+          ctx.fillStyle = '#FFFBEB';
+          ctx.font = 'bold 10px Nunito, sans-serif';
+          ctx.textAlign = 'right';
+          ctx.fillText(idx === 0 ? 'THICK' : 'THIN', bridgeX - 12, sy - 5);
+        }
+      });
+    }
+
+    function drawVibrationOscilloscope(w, stripH, timeSec) {
+      const s = GUITAR_STRINGS[guitarLab.lastPluckedIdx];
+      const freq = computeStringFrequency(s);
+
+      ctx.save();
+      ctx.fillStyle = '#0F172A';
+      ctx.fillRect(14, 10, w - 28, stripH - 12);
+
+      // Label inside oscilloscope
+      ctx.fillStyle = '#38BDF8';
+      ctx.font = 'bold 11px Fredoka, sans-serif';
+      ctx.textAlign = 'left';
+      ctx.fillText(`WAVE SPEED VIEWER (${s.label}):`, 24, 26);
+
+      const speedText = freq >= 310 ? 'FAST VIBRATIONS = HIGH PITCH' : freq >= 185 ? 'MEDIUM VIBRATIONS' : 'SLOW VIBRATIONS = LOW PITCH';
+      ctx.fillStyle = freq >= 310 ? '#FACC15' : '#4ADE80';
+      ctx.textAlign = 'right';
+      ctx.fillText(`${speedText} (${freq} Hz)`, w - 24, 26);
+
+      // Animated Sine Wave showing cycles per second
+      const waveStartX = 24;
+      const waveEndX = w - 24;
+      const waveMidY = 40;
+      const waveAmp = s.amp > 0.2 ? Math.min(10, s.amp * 0.85) : 3.5;
+      const cycles = (freq / 110) * 3.5;
+      const animSpeed = guitarLab.slowMo ? 2.5 : 14;
+
+      ctx.strokeStyle = freq >= 310 ? '#FACC15' : '#38BDF8';
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      for (let x = waveStartX; x <= waveEndX; x += 3) {
+        const norm = (x - waveStartX) / (waveEndX - waveStartX);
+        const y = waveMidY + Math.sin(norm * Math.PI * 2 * cycles - timeSec * animSpeed) * waveAmp;
+        if (x === waveStartX) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    /* =========================================================================
+       8. TEACHER MODE / FULL RESET
+       ========================================================================= */
+    function openTeacherResetModal() {
+      SoundEngine.popClick();
+      document.getElementById('teacherResetModal').classList.remove('hidden');
+    }
+    function closeTeacherResetModal() {
+      document.getElementById('teacherResetModal').classList.add('hidden');
+    }
+
+    function executeFullReset() {
+      SoundEngine.chimeSuccess();
+      closeTeacherResetModal();
+
+      state.progress = { s1: false, s2: false, s3: false };
+      state.celebratedAll = false;
+      state.answers = {
+        predict: null,
+        blanks: { b1: '', b2: '', b3: '', b4: '' },
+        activeBlank: 'b1',
+        cer: { claim: '', evidence: '', reasoning: '' }
+      };
+
+      GUITAR_STRINGS.forEach(s => {
+        s.tension = 100;
+        s.fret = 0;
+        s.amp = 0;
+      });
+      guitarLab.slowMo = false;
+      document.getElementById('btnSlowMo').textContent = '🐢 Slow-Mo Vibrations: OFF';
+      document.getElementById('btnSlowMo').classList.remove('bg-amber-200');
+
+      selectGuitarString(0, false);
+      selectNotebookStep(1);
+      updateProgressUI();
+      document.getElementById('simEventBanner').textContent = 'Classroom reset complete! Pluck any string!';
+    }
+
+    /* =========================================================================
+       9. BOOTSTRAP ON WINDOW ONLOAD
+       ========================================================================= */
+    window.onload = function () {
+      resizeCanvas();
+      renderStringSelectorButtons();
+      selectGuitarString(0, false);
+      renderNotebook();
+      updateProgressUI();
+      requestAnimationFrame(renderLoop);
+    };
+  </script>
+</body>
+</html>
